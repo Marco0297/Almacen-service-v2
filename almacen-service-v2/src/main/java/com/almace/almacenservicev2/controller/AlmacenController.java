@@ -59,7 +59,6 @@ public class AlmacenController {
         service.deleteInventory(id);
     }
 
-
     /**
      * Elimina TODOS los productos
      *

@@ -59,5 +59,9 @@ public class Constants {
      * Constante nombre PRECIO GENERAL ALMACEN
      */
     public static final String PRECIO_GENERAL_ALMACEN = "precio_general_almacen";
+    /**
+     * Constante nombre CARACTERISTICAS
+     */
+    public static final String CARACTERISTICAS = "caracteristicas";
 
 }

@@ -52,6 +52,12 @@ public class AlmacenModel implements Serializable {
     private String observaciones;
 
     /**
+     * Caracteristicas del producto
+     */
+    @Column(name=Constants.CARACTERISTICAS)
+    private String caracteristicasProducto;
+
+    /**
      * Cantidad del producto que hay en almacen
      */
     @Column(name=Constants.CANTIDAD_ALMACEN)
@@ -74,7 +80,5 @@ public class AlmacenModel implements Serializable {
      */
     @Column(name=PRECIO_GENERAL_ALMACEN)
     private Double precioGralAlmacen;
-
-
 
 }
