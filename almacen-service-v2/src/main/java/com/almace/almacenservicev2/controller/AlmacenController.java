@@ -60,6 +60,15 @@ public class AlmacenController {
     }
 
     /**
+     * Elimina TODOS los productos
+     *
+     */
+    @DeleteMapping("/deleteAll")
+    public void deleteAll(){
+        service.deleteAllInventory();
+    }
+
+    /**
      * Busca por id
      * @param id
      * @return

@@ -46,4 +46,8 @@ public interface IInventoryService {
      */
     ResponseEntity<List<AlmacenModel>>findByName(String name);
 
+    /**
+     * ELimina TODO el inventario
+     */
+    public void deleteAllInventory();
 }

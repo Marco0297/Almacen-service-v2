@@ -21,13 +21,19 @@ public class Operaciones {
         return precio;
     }
 
+    /**
+     * Determina el precio de todos los productos guardados en Almacen
+     * @param modelos
+     */
+    public Double precioTotalAlmacen(List<AlmacenModel> modelos){
 
-    public void precioTotalAlmacen(AlmacenModel modelos){
-        List<AlmacenModel> list = new ArrayList<>();
-        list.add(modelos);
-        for (int i = 0; i<list.size(); i++){
-
+        Double totalProductosAlmacen = 0.0;
+        for (int i = 0; i<modelos.size(); i++){
+            Double precio = modelos.get(i).getValorTotalProductoAlmacen();
+            if (precio != null){
+                totalProductosAlmacen += precio;
+            }
         }
-
+            return totalProductosAlmacen;
     }
 }
