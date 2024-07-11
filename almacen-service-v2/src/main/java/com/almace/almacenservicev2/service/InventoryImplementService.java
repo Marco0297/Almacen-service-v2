@@ -30,9 +30,27 @@ public class InventoryImplementService implements IInventoryService{
     @Transactional
     public ResponseEntity<AlmacenModel> save(AlmacenModel almacenModel) {
         Operaciones precio = new Operaciones();
+        /**
+         * calculamos precio unitario por cantidad
+         */
         almacenModel.setValorTotalProductoAlmacen(precio.precioGralPorProducto(almacenModel.getPrecioUnitario(), almacenModel.getCantidadAlmacen()));
 
+        //Guardamos
         AlmacenModel saveProduct = repository.save(almacenModel);
+
+        //Obtenemos todos los productos
+        List<AlmacenModel>todosModelos= repository.findAll();
+
+        //calcula el precio de todo el almacen
+        Double totalPrecioAlmacen = precio.precioTotalAlmacen(todosModelos);
+
+        //guarda y actualiza el precioGral en todos los productos donde aparece la opcion
+        for (AlmacenModel modelo: todosModelos){
+            modelo.setPrecioGralAlmacen(totalPrecioAlmacen);
+        }
+        //Guarda todos los producttos
+        repository.saveAll(todosModelos);
+
         return new ResponseEntity<>(saveProduct, HttpStatus.CREATED);
     }
 
@@ -122,6 +140,14 @@ public class InventoryImplementService implements IInventoryService{
        }else {
            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
        }
+    }
+
+    /**
+     * ELimina TODO el inventario
+     */
+    @Override
+    public void deleteAllInventory() {
+        repository.deleteAll();
     }
 
 }
