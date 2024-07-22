@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
@@ -40,6 +39,10 @@ public class AlmacenFindByOtherController {
         return service.findByName(name);
     }
 
+    /**
+     * Endpoit que controla la peticion para mostrar formato PDF
+     * @return
+     */
     @GetMapping("/exportToPdf")
     public ResponseEntity<byte[]>exportToPdf(){
         List<AlmacenModel> products = service.getAll().getBody();
