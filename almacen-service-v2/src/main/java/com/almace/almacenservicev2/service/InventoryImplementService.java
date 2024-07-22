@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class InventoryImplementService implements IInventoryService{
 
@@ -62,6 +61,7 @@ public class InventoryImplementService implements IInventoryService{
     @Override
     @Transactional(readOnly = true)
     public ResponseEntity<List<AlmacenModel>> getAll() {
+
         List<AlmacenModel>list = repository.findAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }

@@ -1,6 +1,8 @@
 package com.almace.almacenservicev2.model;
 
 import com.almace.almacenservicev2.constants.Constants;
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -25,6 +27,7 @@ public class AlmacenModel implements Serializable {
      * Fecha de ingreso de los producto
      */
     @Column(name=Constants.FECHA_INICIO)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date fchIn;
 
     /**
